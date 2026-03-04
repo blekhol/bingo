@@ -4,16 +4,16 @@
     {
         static void Main(string[] args)
         {
-            BingoJatekos a = BingoJatekos.JatekosFilebol("Andi.txt");
-            Console.WriteLine(a.Nev);
-            foreach (var item in a.Kartya)
+            List<BingoJatekos> jatekosok = [];
+
+            var sr = new StreamReader("./kartyak/nevek.text");
+            foreach (var sor in sr.ReadToEnd().Split("\n"))
             {
-                Console.WriteLine(item);
-			}
-            foreach (var item in a.Talalatok)
-            {
-                Console.WriteLine(item);
-			}
-		}
+                if (sor != "")
+                {
+                    jatekosok.Add(BingoJatekos.JatekosFilebol(sor.Trim()));
+                }
+            }
+        }
     }
 }
