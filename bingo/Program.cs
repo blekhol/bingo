@@ -14,6 +14,9 @@
                     jatekosok.Add(BingoJatekos.JatekosFilebol(sor.Trim()));
                 }
             }
-        }
+
+			//4.feladat
+			Console.WriteLine("4. feladat: Játékosok száma: " + jatekosok.Count);
+		}
     }
 }

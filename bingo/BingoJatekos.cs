@@ -28,16 +28,25 @@ namespace bingo
 			var sr = new StreamReader("./kartyak/" + filenev);
 			string[] sorok = sr.ReadToEnd().Split("\n");
 
-			string[] kartya = new string[5];
+			List<string> mezok = [];
 
-			for (int i = 0; i < kartya.Length; i++)
+			foreach (var sor in sorok)
 			{
-				kartya[i] = sorok[i];
+				if (sor != "")
+				{
+					foreach (var mezo in sor.Split(";"))
+					{
+						if (mezo != "")
+						{
+							mezok.Add(mezo);
+						}
+					}
+				}
 			}
 
 			string nev = filenev.Split(".")[0];
 
-			return new BingoJatekos(nev, kartya);
+			return new BingoJatekos(nev, mezok.ToArray());
 		}
 	}
 }
