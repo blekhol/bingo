@@ -19,6 +19,25 @@ namespace bingo
 			this.talalatok = [13];
 		}
 
+		public string Nev { get => nev; }
+		public string[] Kartya { get => kartya; }
+		public List<int> Talalatok { get => talalatok; }
 
+		public static BingoJatekos JatekosFilebol(string filenev)
+		{
+			var sr = new StreamReader("./kartyak/" + filenev);
+			string[] sorok = sr.ReadToEnd().Split("\n");
+
+			string[] kartya = new string[5];
+
+			for (int i = 0; i < kartya.Length; i++)
+			{
+				kartya[i] = sorok[i];
+			}
+
+			string nev = filenev.Split(".")[0];
+
+			return new BingoJatekos(nev, kartya);
+		}
 	}
 }
